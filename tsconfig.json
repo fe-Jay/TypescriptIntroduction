@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    // * 필수
+    // 자바스크립트 컴파일 버전 입력.
+    // 신버전:es2016, esnext, 구버전:es5, es3
+    "target": "es5",
+    // 자바스크립트 import 문법 입력.
+    // require은 commonjs, import는 es2015, esnext
+    "module": "commonjs",
+
+    // ! 추가로 넣을만한 Property
+    // any 타입을 명시하지 않으면 에러 발생
+    "noImplicitAny": true,
+    // null, undefined를 다른 타입에 할당하면 에러 발생
+    "strictNullChecks": false
+  }
+}
