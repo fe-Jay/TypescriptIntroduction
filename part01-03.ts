@@ -40,29 +40,43 @@ class User {
   }
 }
 
-//* Question
-// Q1. 여러분의 이름, 나이, 출생지역을 변수로 각각 저장해봅시다.
-const myName :string = 'jay';
-const myAge :number = 10;
-const MyAddress :string = 'Seoul';
+// 6. 두가지 이상의 타입을 허용하는 union Type
+let union: string | number | boolean = "kim";
+let unionArr: (string | number)[] = [1, "2", 3]; // 소괄호로 묶어주어야 함
+let unionObj: { a: string | number } = { a: 111 };
 
 
-// Q2. 여러분이 가장 좋아하는 곡과 가수이름을 변수에 object 자료형으로 담아보십시오.
-const myFavoriteSong :{
-  song: string,
-  singer: string
-} = {
-  song: 'track9',
-  singer: '이소라'
+// 7. 모든 타입을 허용하는 any, unknown Type
+let any: any;
+any = 123;
+any = true;
+
+let unknown: unknown;
+unknown = 123;
+unknown = true;
+
+any - 1; // any 타입은 다른 타입과 연산이 가능
+// unknown - 1; // unknown 타입은 다른 타입과 연산이 불가능
+
+let age: string | number;
+// age + 1; // number 타입만 연산이 가능
+
+
+// 8. 함수의 type 지정
+// 8-1. 함수의 parameter, return 타입 지정
+const multiple = (x :number)  :number => {
+  return x * 2
+}
+multiple(10); // => 20
+
+// 8-2. void 타입
+const printMe = (x: number) :void => {
+  // return 1 + 1; // void 타입은 return을 방지
+  x++ ;
 }
 
-// Q3. 다음과 같이 생긴 자료의 타입지정을 해보도록 합시다.
-let project: {
-  member: string[],
-  days: number,
-  started: boolean,
-} = {
-  member : ['kim', 'park'],
-  days : 30,
-  started : true,
+// 8-3. 파라미터가 option인 경우
+const optFunction = (x?: number, y?: number): void => { // y?: number는 y가 없을 수도(undefined) 있다는 의미
+  console.log(x, y);
 }
+optFunction(); // => undefined, undefined
