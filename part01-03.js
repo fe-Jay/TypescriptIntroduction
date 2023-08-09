@@ -1,14 +1,14 @@
 // 1. TypeScript의 기본 타입 예제
 var userName;
 var userAge;
-var user = 'kim123'; // |는 유니온 타입
-var users = ['kim', 'park', 'lee'];
-var userObj = { name: 'kim', age: 30 }; // ?는 선택적 프로퍼티
+var user = "kim123"; // |는 유니온 타입
+var users = ["kim", "park", "lee"];
+var userObj = { name: "kim", age: 30 }; // ?는 선택적 프로퍼티
 var vipUser;
 var jay = [99, true]; // tuple Type
 var paul = {
-    name: 'Paul',
-    age: 22
+    name: "Paul",
+    age: 22,
 };
 // 4. 함수의 타입 지정
 function typeFunction(x) {
@@ -21,19 +21,35 @@ var User = /** @class */ (function () {
     }
     return User;
 }());
-//* Question
-// Q1. 여러분의 이름, 나이, 출생지역을 변수로 각각 저장해봅시다.
-var myName = 'jay';
-var myAge = 10;
-var MyAddress = 'Seoul';
-// Q2. 여러분이 가장 좋아하는 곡과 가수이름을 변수에 object 자료형으로 담아보십시오.
-var myFavoriteSong = {
-    song: 'track9',
-    singer: '이소라'
+// 6. 두가지 이상의 타입을 허용하는 union Type
+var union = "kim";
+var unionArr = [1, "2", 3]; // 소괄호로 묶어주어야 함
+var unionObj = { a: 111 };
+// 7. 모든 타입을 허용하는 any, unknown Type
+var any;
+any = 123;
+any = true;
+var unknown;
+unknown = 123;
+unknown = true;
+any - 1; // any 타입은 다른 타입과 연산이 가능
+// unknown - 1; // unknown 타입은 다른 타입과 연산이 불가능
+var age;
+// age + 1; // number 타입만 연산이 가능
+// 8. 함수의 type 지정
+// 8-1. 함수의 parameter, return 타입 지정
+var multiple = function (x) {
+    return x * 2;
 };
-// Q3. 다음과 같이 생긴 자료의 타입지정을 해보도록 합시다.
-var project = {
-    member: ['kim', 'park'],
-    days: 30,
-    started: true,
+multiple(10); // => 20
+// 8-2. void 타입
+var printMe = function (x) {
+    // return 1 + 1; // void 타입은 return을 방지
+    x++;
 };
+// 8-3. 파라미터가 option인 경우
+var optFunction = function (x, y) {
+    // y?: number는 y가 없을 수도(undefined) 있다는 의미
+    console.log(x, y);
+};
+optFunction(); // => undefined, undefined
