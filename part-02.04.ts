@@ -18,8 +18,8 @@ class TestUser {
         this.name = a + this.familyName;
     }
 
-    changeFamilyName() {
-        this.familyName = "Lee";
+    changeFamilyName(changeName: string) {
+        this.familyName = changeName;
     }
 }
 
@@ -27,11 +27,11 @@ let user1 = new TestUser("Tester");
 user1.name = "JAY"; // public이기 때문에 접근 가능
 // user1.familyName = 'Lee'  // private이기 때문에 접근 불가능
 
-console.log(user1.name); // => TesterKim
+console.log(user1.name); // => Testerkim
 
 // private 속성 수정 방법
-user1.changeFamilyName();
-console.log(user1); // => TestUser { name: 'TesterLee', familyName: 'Lee' }
+user1.changeFamilyName("Lee");
+console.log(user1);
 
 // * public 키워드로 축약 가능
 class testPerson {

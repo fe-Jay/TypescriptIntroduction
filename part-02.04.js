@@ -11,18 +11,18 @@ var TestUser = /** @class */ (function () {
         this.familyName = "kim"; // private 키워드를 붙여서 수정이 불가능하도록 구현.
         this.name = a + this.familyName;
     }
-    TestUser.prototype.changeFamilyName = function () {
-        this.familyName = "Lee";
+    TestUser.prototype.changeFamilyName = function (changeName) {
+        this.familyName = changeName;
     };
     return TestUser;
 }());
 var user1 = new TestUser("Tester");
 user1.name = "JAY"; // public이기 때문에 접근 가능
 // user1.familyName = 'Lee'  // private이기 때문에 접근 불가능
-console.log(user1.name); // => TesterKim
+console.log(user1.name); // => Testerkim
 // private 속성 수정 방법
-user1.changeFamilyName();
-console.log(user1); // => TestUser { name: 'TesterLee', familyName: 'Lee' }
+user1.changeFamilyName("Lee");
+console.log(user1);
 // * public 키워드로 축약 가능
 var testPerson = /** @class */ (function () {
     function testPerson(name) {
